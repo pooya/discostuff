@@ -8,8 +8,22 @@ COMMIT_SHA=$(git log -1 | head -n 1 | cut -f2 -d' ')
 echo $COMMIT_SHA
 
 sudo make install || exit 1
+Commands="cd $DISCO_PATH &&\
+        git fetch &&\
+        git checkout $COMMIT_SHA &&\
+        sudo make install-node &&\
+        cd $DISCO_PATH/lib &&\
+        sudo python setup.py install"
+
 while read node; do
-    echo ssh $node 'cd $DISCO_PATH  && git checkout $COMMIT_SHA && sudo make install-node && cd $DISCO_PATH/lib && sudo python setup.py install'
+    echo "Going to execute $Commands on $node"
+    ssh $node $Commands
+     ret=$?
+     if [ $ret -ne 0 ]
+     then
+        echo "Node $node failed with $ret"
+        exit 2
+     fi
 done < $DISCO_PATH/nodes
 
 disco start || exit 1
