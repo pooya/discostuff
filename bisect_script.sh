@@ -3,6 +3,9 @@
 OUT=/tmp/out
 DISCO_PATH=/home/shayan/disco
 
+cd $DISCO_PATH/lib || exit 2
+sudo python setup.py install || exit 3
+
 cd $DISCO_PATH
 COMMIT_SHA=$(git log -1 | head -n 1 | cut -f2 -d' ')
 echo $COMMIT_SHA
