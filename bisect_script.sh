@@ -17,7 +17,7 @@ Commands="cd $DISCO_PATH &&\
 
 while read node; do
     echo "Going to execute $Commands on $node"
-    ssh $node $Commands
+    ssh  </dev/null $node $Commands
      ret=$?
      if [ $ret -ne 0 ]
      then
