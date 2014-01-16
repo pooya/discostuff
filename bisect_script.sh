@@ -33,7 +33,13 @@ disco start || exit 1
 
 for i in 1
 do
-    while read test; do
+    cd $DISCO_PATH/tests/ && python testcases.py  | cut -d'.' -f1 | sort | uniq | while read test; do
+      grep -q $test $DISCO_PATH/tests/blacklist
+      if [ $? -eq 0 ]
+      then
+          echo "Skipping test $test"
+          continue
+      fi
       echo "disco test $test"
       disco test $test 2>$OUT
       tail -n 1 $OUT | grep OK
@@ -41,7 +47,7 @@ do
       then
         exit 1
       fi
-    done < $DISCO_PATH/testcases
+    done
 done
 
 pgrep beam | xargs kill
