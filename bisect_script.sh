@@ -10,10 +10,11 @@ cd $DISCO_PATH
 COMMIT_SHA=$(git log -1 | head -n 1 | cut -f2 -d' ')
 echo $COMMIT_SHA
 
-sudo make install || exit 1
 Commands="cd $DISCO_PATH &&\
         git fetch &&\
         git checkout $COMMIT_SHA &&\
+        find . -name '*.beam' | sudo xargs rm -f &&\
+        find . -name '*.pyc' | sudo xargs rm -f &&\
         sudo make install-node &&\
         cd $DISCO_PATH/lib &&\
         sudo python setup.py install"
@@ -28,6 +29,8 @@ while read node; do
         exit 2
      fi
 done < $DISCO_PATH/nodes
+
+sudo make install || exit 1
 
 disco start || exit 1
 
