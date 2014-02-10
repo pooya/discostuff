@@ -1,0 +1,15 @@
+diff --git a/sort.c b/sort.c
+index d811a86..664b214 100644
+--- a/sort.c
++++ b/sort.c
+@@ -1060,10 +1060,6 @@ main(int argc, char **argv)
+                                }
+                                sort_opts_vals.tflag = true;
+                                sort_opts_vals.field_sep = btowc(optarg[0]);
+-                               if (sort_opts_vals.field_sep == WEOF) {
+-                                       errno = EINVAL;
+-                                       err(2, NULL);
+-                               }
+                                if (!gnusort_numeric_compatibility) {
+                                        if (symbol_decimal_point == sort_opts_vals.field_sep)
+                                                symbol_decimal_point = WEOF;
