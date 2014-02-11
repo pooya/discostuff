@@ -1,5 +1,5 @@
 1063,1066d1062
-<				 if (sort_opts_val.field_sep == WEOF) {
-<					 errno = EINVAL;
-<					 err(2, NULL);
-<				 }
+< 				if (sort_opts_val.field_sep == WEOF) {
+< 					errno = EINVAL;
+< 					err(2, NULL);
+< 				}
