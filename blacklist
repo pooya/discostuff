@@ -5,3 +5,4 @@ test_pipeline_sort
 test_encode
 test_pickle
 test_query
+test_oob
