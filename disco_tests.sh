@@ -4,7 +4,7 @@ OUT=/tmp/out
 
 git clone https://github.com/discoproject/discodb.git
 cd discodb
-sudo python setup.py install
+sudo python setup.py install || exit 1
 cd ..
 
 cd disco
