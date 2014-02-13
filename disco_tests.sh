@@ -2,6 +2,11 @@
 
 OUT=/tmp/out
 
+git clone https://github.com/discoproject/discodb.git
+cd discodb
+sudo python setup.py install
+cd ..
+
 cd disco
 find . -name '*.beam' | sudo xargs rm -f
 find . -name '*.pyc' | sudo xargs rm -f
