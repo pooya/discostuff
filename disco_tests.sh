@@ -3,12 +3,6 @@
 OUT=/tmp/out
 SETTING_FILE=/etc/disco/settings.py
 
-yes | sudo yum install libcmph-devel
-git clone https://github.com/discoproject/discodb.git
-cd discodb
-sudo python setup.py install || exit 1
-cd ..
-
 cd disco
 find . -name '*.beam' | sudo xargs rm -f
 find . -name '*.pyc' | sudo xargs rm -f
