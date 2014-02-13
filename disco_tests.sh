@@ -27,10 +27,10 @@ python testcases.py | cut -d'.' -f1 | sort | uniq | while read test; do
   grep -q $test ../../shayan/blacklist
   if [ $? -eq 0 ]
   then
-      echo "Skipping test $test "
+      echo "Skipping test $test"
       continue
   fi
-  echo -n "disco test $test"
+  echo -n "disco test $test "
   disco test $test 2>$OUT
   tail -n 1 $OUT | grep OK
   if [ $? -ne 0 ]
