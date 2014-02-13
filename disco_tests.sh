@@ -27,7 +27,7 @@ python testcases.py | cut -d'.' -f1 | sort | uniq | while read test; do
   grep -q $test ../../shayan/blacklist
   if [ $? -eq 0 ]
   then
-      echo "Skipping test $test"
+      echo "Skipping test $test "
       continue
   fi
   echo -n "disco test $test"
@@ -35,10 +35,9 @@ python testcases.py | cut -d'.' -f1 | sort | uniq | while read test; do
   tail -n 1 $OUT | grep OK
   if [ $? -ne 0 ]
   then
-    echo " failed."
+    echo "failed."
     exit 7
   fi
-  echo " passed."
 done
 
 pgrep beam | xargs kill
