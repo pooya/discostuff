@@ -15,7 +15,7 @@ cd lib || exit 2
 sudo python setup.py install || exit 3
 cd .. || exit 4
 
-sudo make install || exit 5
+sudo gmake install || exit 5
 disco start || exit 6
 
 cd tests
