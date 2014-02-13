@@ -16,6 +16,7 @@ sudo python setup.py install || exit 3
 cd .. || exit 4
 
 sudo gmake install || exit 5
+sudo chown -R $USER /usr/local/var/disco
 disco start || exit 6
 
 cd tests
