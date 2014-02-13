@@ -1,6 +1,7 @@
 #!/bin/bash
 
 OUT=/tmp/out
+SETTING_FILE=/etc/disco/settings.py
 
 yes | sudo yum install libcmph-devel
 git clone https://github.com/discoproject/discodb.git
@@ -19,8 +20,7 @@ cd .. || exit 4
 sudo gmake install || exit 5
 sudo gmake install-tests || exit 5
 sudo chown -R $USER /usr/local/var/disco
-sudo sed "s/= 3/= 1/g" $SETTING_FILE > $TMP
-sudo mv $TMP $SETTING_FILE
+sudo sed -i "s/= 3/= 1/g" $SETTING_FILE
 disco start || exit 6
 
 cd tests
