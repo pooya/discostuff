@@ -2,7 +2,7 @@
 
 OUT=/tmp/out
 
-sudo yum install libcmph-devel
+yes | sudo yum install libcmph-devel
 git clone https://github.com/discoproject/discodb.git
 cd discodb
 sudo python setup.py install || exit 1
