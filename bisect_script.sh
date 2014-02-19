@@ -15,7 +15,10 @@ Commands="cd $DISCO_PATH &&\
         git checkout $COMMIT_SHA &&\
         find . -name '*.beam' | sudo xargs rm -f &&\
         find . -name '*.pyc' | sudo xargs rm -f &&\
+        yes no | sudo make uninstall &&\
+        sudo make install &&
         sudo make install-node &&\
+        sudo chown -R $USER /usr/local/var/disco &&\
         cd $DISCO_PATH/lib &&\
         sudo python setup.py install"
 
@@ -31,6 +34,7 @@ while read node; do
 done < $DISCO_PATH/nodes
 
 sudo make install || exit 1
+sudo make install-tests || exit 1
 
 disco start || exit 1
 
