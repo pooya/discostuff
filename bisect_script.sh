@@ -33,7 +33,6 @@ while read node; do
      fi
 done < $DISCO_PATH/nodes
 
-sudo make install || exit 1
 sudo make install-tests || exit 1
 
 disco start || exit 1
