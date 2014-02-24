@@ -9,7 +9,7 @@ find . -name '*.pyc' | sudo xargs rm -f
 
 cd lib || exit 2
 sudo python setup.py install || exit 3
-cd .. || exit 4
+cd ..
 
 sudo gmake install || exit 5
 sudo gmake install-tests || exit 5
