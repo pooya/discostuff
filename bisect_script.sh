@@ -13,8 +13,6 @@ echo $COMMIT_SHA
 Commands="cd $DISCO_PATH &&\
         git fetch &&\
         git checkout $COMMIT_SHA &&\
-        find . -name '*.beam' | sudo xargs rm -f &&\
-        find . -name '*.pyc' | sudo xargs rm -f &&\
         yes no | sudo make uninstall &&\
         sudo make install &&
         sudo make install-node &&\
