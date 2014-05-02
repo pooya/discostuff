@@ -12,6 +12,7 @@ echo $COMMIT_SHA
 
 Commands="cd $DISCO_PATH &&\
         git fetch &&\
+        git fetch upstream &&\
         git checkout $COMMIT_SHA &&\
         yes no | sudo make uninstall &&\
         sudo make install &&
@@ -31,7 +32,11 @@ while read node; do
      fi
 done < $DISCO_PATH/nodes
 
+yes no | sudo make uninstall || exit 1
+sudo make install || exit 1
 sudo make install-tests || exit 1
+sudo make install-examples || exit 1
+sudo chown -R $USER /usr/local/var/disco/ || exit 1
 
 disco start || exit 1
 
