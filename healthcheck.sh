@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Usage: ./healthcheck nodes
+# Usage: ./healthcheck.sh nodes
 
 # where nodes is a file that includes the name of the slave nodes like:
 
