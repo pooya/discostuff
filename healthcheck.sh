@@ -1,14 +1,13 @@
 #!/bin/sh
-"""
-Usage: ./healthcheck nodes
 
-where nodes is a file that includes the name of the slave nodes like:
+# Usage: ./healthcheck nodes
 
-$ cat nodes
-dev01
-dev02
-dev03
-"""
+# where nodes is a file that includes the name of the slave nodes like:
+
+# $ cat nodes
+# dev01
+# dev02
+# dev03
 
 DISCO_NOT_INSTALLED=1
 COMPILE_ERROR=2
