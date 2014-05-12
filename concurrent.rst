@@ -19,7 +19,7 @@ It is assumed that the order of the inputs is not important.  The inputs will be
 consumed as soon as they are available.
 
 
-.. image:: images/S0_failure.png
+.. image:: images/failure_S0.png
     :height: 400px
     :width: 800px
     :align: center
@@ -27,7 +27,7 @@ consumed as soon as they are available.
     :alt: a task in the first stage fails
 
 
-.. image:: images/S0_failure_recovery.png
+.. image:: images/failure_S0_recovery.png
     :height: 400px
     :width: 800px
     :align: center
