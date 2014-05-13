@@ -84,6 +84,30 @@ In the new model, the job_coordinator does not have this luxury so it has to
 establish a communication channel to the task.  The task will run and consume
 its available inputs but the future inputs are received via the channel.
 
+Implementation
+---
+
+The following sequence diagram shows the implementation of the producer-consumer
+structure.  The job_coordinator is the process that receives the outputs of all
+of the tasks and is responsible for sending those outputs to the consuming
+tasks.
+
+.. image:: images/sequence.png
+    :height: 1200px
+    :width: 800px
+    :align: center
+    :scale: 75 %
+    :alt: sequence diagram
+
+
+In this figure, the job_coordinator receives the pid of the disco_worker on the
+slave node and then forms a one way channel.  The inputs are sent to this
+disco_worker on the slave node as they become available and then they are sent
+to the actual worker (external) process.
+
+In this figure, the disco_worker process and the external worker are talking
+based on the disco worker protocol.
+
 Failure Recovery
 ----------
 
