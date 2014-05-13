@@ -1,6 +1,19 @@
 Disco Concurrent Stages
 ===========
 
+This document describes the Disco concurrent stages design and implementation.
+Once this design has been merged into upstream, this document will be added to
+disco docs.
+
+
+Overview
+-----
+The concurrent stages is a project designed to reduce the turn-around time of the
+jobs in Disco.  It will also allow for further optimizations like non-persisted
+intermediate results.
+In a nutshell, the concurrent stages will allow consecutive stages to run
+concurrently and if there is enough resources, the tasks can run in parallel.
+
 concurrency in case of split grouping
 -----
 
@@ -8,7 +21,7 @@ In the concurrent stages model, disco will run a couple of consecutive stages
 concurrently.  Which means, a future stage (e.g. reduce) will run concurrently
 with the previous stage (e.g. map).
 
-The simplest type of concurrency is when the grouping of a stage is "split".
+The simplest type of concurrency is when the grouping of a stage is _split_.
 This means, each task of a future stage will consume the outputs of
 exactly one task of the previous stage.
 
@@ -29,9 +42,7 @@ For the other types of concurrencies, Disco will let you run a job in the cluste
 and specify the _concurrent_ flag for a stage.  If
 this flag is specified for a stage, the tasks of that stage are going to be a
 candidate to get started as soon as their inputs are available.  In other words,
-some stages will be made concurrent.  If there are enough resources, the tasks
-of these two stages can actually run in parallel and will result in a smaller
-turnaround time for the job.
+some stages will be made concurrent.
 
 Assume we have a pipeline like this figure:
 
