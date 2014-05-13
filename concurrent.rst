@@ -85,7 +85,7 @@ establish a communication channel to the task.  The task will run and consume
 its available inputs but the future inputs are received via the channel.
 
 Implementation
----
+-------
 
 The following sequence diagram shows the implementation of the producer-consumer
 structure.  The job_coordinator is the process that receives the outputs of all
@@ -93,10 +93,10 @@ of the tasks and is responsible for sending those outputs to the consuming
 tasks.
 
 .. image:: images/sequence.png
-    :height: 1200px
+    :height: 1600px
     :width: 800px
     :align: center
-    :scale: 75 %
+    :scale: 120 %
     :alt: sequence diagram
 
 
