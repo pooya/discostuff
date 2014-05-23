@@ -3,7 +3,7 @@ List of the projects
 
 [Disco Concurrent Stages](concurrent_stages.rst)
 
-[Disco Linux Packages](disco_profile.rst)
+[Disco Linux Packages](deb_rpm.rst)
 
 [Disco on Erlang 17](erl_17.rst)
 
