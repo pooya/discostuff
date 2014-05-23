@@ -24,3 +24,5 @@ List of the projects
 [Travis CI integration](travis.rst)
 
 [XML reader for Disco](xml.rst)
+
+[Python LRU Cache](lru.rst)
