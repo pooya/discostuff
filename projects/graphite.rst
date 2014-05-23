@@ -1,4 +1,4 @@
-Integrate Disco with Graphite.
+Graphite Integration
 ======
 
 Graphite is a tool used for monitoring the status of the system.  A system
