@@ -1,4 +1,4 @@
-Add an XML reader to Disco and an example for parsing Wikipedia corpus:
+An XML reader to Disco
 =========
 
 The example shows the usage of Disco for running tasks on a huge data set
