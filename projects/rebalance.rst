@@ -1,4 +1,4 @@
-DDfs Rebalance.
+DDfs Rebalancing
 ====
 
 This project was done by a Google Summer of Code student in Summer 2013.
@@ -9,6 +9,7 @@ In this project, we assign priorities to different nodes in the cluster and
 optionaly send the new files (blobs) to the higher-priority nodes to balance the
 cluster.  Moreover, when the new nodes are added, we rebalance the current
 files (blobs) to these new nodes.
+
 This feature is essential in the elastic environments like Amazon Elastic
 Cloud (EC2) where nodes come and go and Disco should be able to utilize the
 capacity of the new nodes more carefully.
