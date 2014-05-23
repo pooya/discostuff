@@ -7,8 +7,12 @@ dictionaries and sets are now typed.  In this process two bugs in Erlang 17.0 ha
 been uncovered:
 
 http://erlang.org/pipermail/erlang-bugs/2014-April/004321.html
+
 http://erlang.org/pipermail/erlang-questions/2014-April/078647.html
 
 These types can serve as a good documentation and make dialyzer's job easier.
 We still have to use the nowarn_deprecated_type flag with the erlang
-compiler becasuse of a dialyzer bug.
+compiler becasuse of a dialyzer bug.  Another bug in Erlang 17 was uncovered with
+travis-ci builds:
+
+http://erlang.org/pipermail/erlang-bugs/2014-May/004413.html
