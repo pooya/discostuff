@@ -10,7 +10,7 @@ I set up travis-ci builds for:
 
     Inferno project https://github.com/chango/inferno
 
-    Disco workers: https://github.com/discoproject/goworker
+    Disco Go worker: https://github.com/discoproject/goworker
 
 These will run all of the supplied unittests for the project as soon as a pull
 request is created and will let us only merge the pull requests if they do not
