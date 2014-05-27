@@ -108,6 +108,47 @@ to the actual worker (external) process.
 In this figure, the disco_worker process and the external worker are talking
 based on the disco worker protocol.
 
+Deadlock Avoidance
+----------
+With sequential stages, a task only starts when all of its dependencies have
+already finished.  With concurrent stages, however, the dependencies of a task
+might not have started.  Therefore, we will need a mechanism to make sure the
+consumers do not starve the producers.  The deadlock occurs when we have a job
+which is running some consumers (which are waiting for the producers) and there
+is no more free workers available for it to run the producers.  The consumers
+never finish because they are waiting for their inputs.
+
+In order to avoid this deadlock scenario, we create the following mechanism:
+
+The job_coordinator is responsible for maintaining a set of pending tasks.  A
+pending task is a task which has at least one input available but is not running
+yet.
+Whenever the job_coordinator decides to submit a task to the disco_server, it
+consults the available policies and only submits the task if the policies let it
+to do so.  Otherwise, the task is queued inside the job_coordinator for a later
+time.  Whenever any task completes, this policy is reconsidered to potentially
+submit new tasks to disco_server.
+
+The sequential stages, for example, can be implemented based on these policies.
+For doing so, the policy should only allow the tasks of the first active stage.
+
+For the concurrent stages, we have the following policy which is used to ensure
+there cannot be any deadlocks:
+
+Lets call the first active stage S0.  The total number of tasks in the stages other
+than S0 should never be more than half of all of MaxWorkers, where MaxWorkers is
+the maximum of 1 or the number of workers ever given to this job.
+
+For example, if there was a time when there where 5 workers running a job, the
+total number of tasks in the stages other than S0 can never be more than 2.
+That means, at all times, there are at least 3 workers available for the tasks
+of the previous stages.
+
+This policy is not fool-proof and might change in the future.  For example, if
+the total number of workers given to the job decreases, from 5 to 2 in the
+previous example, and we have allocated those two workers for the tasks of the
+future stages, then the job will deadlock.
+
 Failure Recovery
 ----------
 
