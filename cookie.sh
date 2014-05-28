@@ -7,6 +7,6 @@
 for node in $(cat $1)
 do
     echo $node
-    ssh $node "yes | rm ~/.erlang.cookie" || exit 1
+    ssh $node "yes | rm -f ~/.erlang.cookie" || exit 1
     scp ~/.erlang.cookie $node: || exit 1
 done
