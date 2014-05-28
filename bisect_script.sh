@@ -11,7 +11,7 @@ COMMIT_SHA=$(git log -1 | head -n 1 | cut -f2 -d' ')
 echo $COMMIT_SHA
 
 Commands="cd $DISCO_PATH &&\
-        git fetch &&\
+        git fetch origin &&\
         git fetch upstream &&\
         git checkout $COMMIT_SHA &&\
         yes no | sudo make uninstall &&\
