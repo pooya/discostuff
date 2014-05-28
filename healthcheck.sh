@@ -48,6 +48,7 @@ do
     scp -q pingee.erl $node:/tmp/
     ssh $node "cd /tmp && erl -compile pingee && erl -sname slave -s pingee "\
                 "start -noshell -detached" >>possible_error
+    sleep 1
     erl -sname master -noshell -s pinger pingit $node -s init stop || exit $PING_FAILED
     echo "pass"
 done
