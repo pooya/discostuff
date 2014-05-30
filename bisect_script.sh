@@ -2,6 +2,7 @@
 
 OUT=/tmp/out
 DISCO_PATH=/home/shayan/disco
+DISCO_ROOT="/usr/local/var/disco"
 
 cd $DISCO_PATH/lib || exit 2
 sudo python setup.py install || exit 3
@@ -17,7 +18,7 @@ Commands="cd $DISCO_PATH &&\
         yes no | sudo make uninstall &&\
         sudo make install &&
         sudo make install-node &&\
-        sudo chown -R $USER /usr/local/var/disco &&\
+        sudo chown -R $USER $DISCO_ROOT &&\
         cd $DISCO_PATH/lib &&\
         sudo python setup.py install"
 
@@ -36,7 +37,7 @@ yes no | sudo make uninstall || exit 1
 sudo make install || exit 1
 sudo make install-tests || exit 1
 sudo make install-examples || exit 1
-sudo chown -R $USER /usr/local/var/disco/ || exit 1
+sudo chown -R $USER $DISCO_ROOT || exit 1
 
 disco start || exit 1
 
