@@ -8,7 +8,6 @@ then
     Pid=$(echo $Pids | cut -d' ' -f$rand)
     echo "Killing pid: " $Pid
     kill $Pid
-    sleep 1
 else
     echo "nothing to kill"
 fi
