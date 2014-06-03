@@ -1,6 +1,6 @@
 #!/bin/sh
 
-Pids=$(ps aux | grep worker | grep -v grep | awk '{print $2}')
+Pids=$(ps aux | grep 'disco.*worker' | grep -v grep | awk '{print $2}')
 nPids=$(echo $Pids | wc -w)
 if [ $nPids != 0 ]
 then
