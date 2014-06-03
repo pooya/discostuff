@@ -1,6 +1,6 @@
 #!/bin/sh
 
-Pids=$(ps -eo pid,fname,cmd | grep worker | grep -v grep | sed 's/^ *//' | cut -d' ' -f1)
+Pids=$(ps aux | grep worker | grep -v grep | awk '{print $2}')
 nPids=$(echo $Pids | wc -w)
 if [ $nPids != 0 ]
 then
