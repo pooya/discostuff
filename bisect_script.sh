@@ -2,7 +2,7 @@
 
 OUT=/tmp/out
 DISCO_PATH=/home/shayan/disco
-DISCO_ROOT="/usr/local/var/disco"
+DISCO_ROOT="/usr/var/disco"
 
 cd $DISCO_PATH/lib || exit 2
 sudo python setup.py install || exit 3
