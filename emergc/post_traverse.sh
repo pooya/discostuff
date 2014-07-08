@@ -15,7 +15,7 @@ mkdir /tmp/per_node_blobs
 
 while read a b
 do
-echo -n "$b " >> /tmp/per_node_blobs/$a
+echo $b >> /tmp/per_node_blobs/$a
 done < all_blobs
 
 for file in /tmp/per_node_blobs/*
@@ -23,6 +23,12 @@ do
     node=$(basename $file)
     echo "processing node $node"
     echo "==============================================================="
-    ssh $node "echo $(cat $file)" || exit 1
+    total_lines=$(wc -l $file | awk '{print $1}')
+    for begin in $(seq 1 1000 $total_lines)
+    do
+        end=$(($begin + 1000))
+        blobs=$(sed "$begin,$end!d" $file | awk -F'\\\\$' '{printf "%s ", $1}END{print ""}')
+        ssh $node echo $blobs || exit 1
+    done
     echo "==============================================================="
 done
