@@ -24,11 +24,11 @@ do
     echo "processing node $node"
     echo "==============================================================="
     total_lines=$(wc -l $file | awk '{print $1}')
-    for begin in $(seq 1 1000 $total_lines)
+    for begin in $(seq 1 20000 $total_lines)
     do
-        end=$(($begin + 1000))
+        end=$(($begin + 20000))
         blobs=$(sed "$begin,$end!d" $file | awk -F'\\\\$' '{printf "%s ", $1}END{print ""}')
-        ssh $node echo $blobs || exit 1
+        ssh $node "rm -f $blobs &" || exit 1
     done
     echo "==============================================================="
 done
